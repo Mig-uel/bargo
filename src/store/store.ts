@@ -5,9 +5,9 @@ import userReducer from '@/store/user/userSlice'
 
 export const store = configureStore({
   reducer: {
-    [cartReducer.name]: cartReducer,
-    [themeReducer.name]: themeReducer,
-    [userReducer.name]: userReducer,
+    cart: cartReducer,
+    theme: themeReducer,
+    user: userReducer,
   },
 })
 
