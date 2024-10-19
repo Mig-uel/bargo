@@ -6,6 +6,7 @@ import {
   HomeLayout,
   Landing,
   Login,
+  Orders,
   Products,
   Register,
   SingleProduct,
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: 'checkout',
         element: <Checkout />,
+      },
+      {
+        path: 'orders',
+        element: <Orders />,
       },
     ],
   },
