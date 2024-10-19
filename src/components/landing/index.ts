@@ -1,0 +1,5 @@
+export { default as FeaturedProducts } from './FeaturedProducts/featured-products.component'
+export { default as Hero } from './Hero/hero.component'
+export { default as HeroCarousel } from './HeroCarousel/hero-carousel.component'
+export { default as ProductsGrid } from './ProductsGrid/products-grid.component'
+export { default as SectionTitle } from './SectionTitle/section-title.component'
