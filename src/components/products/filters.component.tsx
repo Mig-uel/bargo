@@ -1,16 +1,39 @@
 import { Form, Link, useLoaderData } from 'react-router-dom'
-
 import { Button } from '../ui/button'
+import { FormInput, FormSelect } from '../inputs'
 import type { ProductsResponseWithParams } from '@/utils'
-import { FormInput } from '../inputs'
 
 const Filters = () => {
-  const { params } = useLoaderData() as ProductsResponseWithParams
+  const { params, meta } = useLoaderData() as ProductsResponseWithParams
 
   return (
     <Form className='border rounded-md px-8 py-4 grid gap-x-4 gap-y-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center'>
-      {/* search input */}
+      {/* SEARCH */}
       <FormInput name='search' type='search' defaultValue={params.search} />
+
+      {/* CATEGORIES */}
+      <FormSelect
+        label='Select Category'
+        name='category'
+        options={meta.categories}
+        defaultValue={params.category}
+      />
+
+      {/* COMPANIES */}
+      <FormSelect
+        name='company'
+        label='Select Company'
+        options={meta.companies}
+        defaultValue={params.company}
+      />
+
+      {/* ORDER BY */}
+      <FormSelect
+        name='order'
+        label='order by'
+        options={['a-z', 'z-a', 'high', 'low']}
+        defaultValue={params.order}
+      />
 
       <Button type='submit' size='sm' className='self-end mb-2'>
         Search
