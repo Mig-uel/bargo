@@ -3,10 +3,10 @@ import type { LoaderFunction } from 'react-router-dom'
 
 const url = '/products?featured=true'
 
-const loader: LoaderFunction = async () => {
+const loader: LoaderFunction = async (): Promise<ProductsResponse> => {
   const res = await customFetch<ProductsResponse>(url)
 
-  return res
+  return { ...res.data }
 }
 
 export default loader
