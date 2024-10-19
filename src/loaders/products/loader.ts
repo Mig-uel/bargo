@@ -1,11 +1,15 @@
-import { customFetch, type ProductsResponse } from '@/utils'
+import {
+  customFetch,
+  type ProductsResponseWithParams,
+  type ProductsResponse,
+} from '@/utils'
 import type { LoaderFunction } from 'react-router-dom'
 
 const url = '/products'
 
 const loader: LoaderFunction = async ({
   request,
-}): Promise<ProductsResponse> => {
+}): Promise<ProductsResponseWithParams> => {
   // create url from request using WebAPI URL
   const newURL = new URL(request.url)
 
@@ -18,6 +22,7 @@ const loader: LoaderFunction = async ({
 
   return {
     ...res.data,
+    params,
   }
 }
 
