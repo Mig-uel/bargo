@@ -1,4 +1,5 @@
 export { default as CartButton } from './cart-button.component'
+export { default as LinksDropdown } from './links-dropdown.component'
 export { default as Logo } from './logo.component'
 export { default as NavLinks } from './nav-links.component'
 export { default as Navbar } from './navbar.component'
