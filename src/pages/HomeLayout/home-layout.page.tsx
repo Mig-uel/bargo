@@ -1,11 +1,12 @@
 import { Header } from '@/components'
+import { Navbar } from '@/components/nav'
 import { Outlet } from 'react-router-dom'
 
 const HomeLayout = () => {
   return (
     <>
       <Header />
-      <nav>nav</nav>
+      <Navbar />
 
       <div className='align-element py-20'>
         <Outlet />
