@@ -3,6 +3,7 @@ import {
   About,
   Cart,
   Checkout,
+  Error,
   HomeLayout,
   Landing,
   Login,
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <HomeLayout />,
+    errorElement: <Error />,
 
     children: [
       {
