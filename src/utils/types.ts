@@ -37,7 +37,7 @@ export type ProductsResponse = {
 export type Params = {
   search?: string
   category?: string
-  company?: string
+  companies?: string
   order?: string
   price?: string
   shipping?: string
