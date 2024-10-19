@@ -1,4 +1,14 @@
+import { Filters, Pagination, ProductsContainer } from '@/components/products'
+
 const Products = () => {
-  return <div>Products</div>
+  return (
+    <>
+      <Filters />
+
+      <ProductsContainer />
+
+      <Pagination />
+    </>
+  )
 }
 export default Products
