@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { Button } from '../ui/button'
+import { useAppSelector } from '@/store/hooks'
 import { ShoppingCart } from 'lucide-react'
 
 const CartButton = () => {
-  const numItemsInCart = 10
+  const numItemsInCart = useAppSelector((state) => state.cart.numItemsInCart)
 
   return (
     <Button
