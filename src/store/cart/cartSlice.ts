@@ -52,8 +52,14 @@ const cartSlice = createSlice({
     },
 
     removeItem: () => {},
+
     editItem: () => {},
-    clearCart: () => {},
+
+    clearCart: () => {
+      localStorage.setItem('cart', JSON.stringify(defaultState))
+
+      return defaultState
+    },
 
     calculateTotal: (state) => {
       // calculate tax
