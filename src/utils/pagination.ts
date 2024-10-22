@@ -9,7 +9,11 @@ export const constructURL = ({
   pathname,
   search,
 }: ConstructURLParam): string => {
-  return '/products'
+  const searchParams = new URLSearchParams(search)
+
+  searchParams.set('page', pageNumber.toString())
+
+  return `${pathname}?${searchParams.toString()}`
 }
 
 type ConstructPrevOrNextParams = {
