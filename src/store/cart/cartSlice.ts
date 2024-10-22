@@ -77,7 +77,36 @@ const cartSlice = createSlice({
       toast({ description: 'Item removed from the cart' })
     },
 
-    editItem: () => {},
+    editItem: (
+      state,
+      action: PayloadAction<{ productID: string; amount: number }>
+    ) => {
+      const cartItem = action.payload
+
+      state.cartItems = state.cartItems.map((item) => {
+        if (item.productID.toString() === cartItem.productID)
+          return { ...item, amount: cartItem.amount }
+
+        return item
+      })
+
+      // update number of items in cart
+      state.numItemsInCart = state.cartItems.reduce(
+        (acc, curr) => acc + curr.amount,
+        0
+      )
+
+      // update cart total
+      state.cartTotal = state.cartItems.reduce(
+        (acc, curr) => acc + curr.amount * Number(curr.price),
+        0
+      )
+
+      // update order total
+      cartSlice.caseReducers.calculateTotal(state)
+
+      toast({ description: 'Item quantity has been updated' })
+    },
 
     clearCart: () => {
       localStorage.setItem('cart', JSON.stringify(defaultState))
