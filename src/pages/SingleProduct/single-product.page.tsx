@@ -6,6 +6,7 @@ import {
   SelectProductAmount,
   SelectProductColor,
 } from '../../components/single-product'
+import { Mode } from '@/components/single-product/select-product-amount.component'
 import { formatPrice, type SingleProductResponse } from '@/utils'
 
 const SingleProduct = () => {
@@ -55,10 +56,18 @@ const SingleProduct = () => {
           </p>
           <p className='mt-6 leading-8'>{description}</p>
           {/* COLORS */}
-          <SelectProductColor />
+          <SelectProductColor
+            colors={colors}
+            productColor={productColor}
+            setProductColor={setProductColor}
+          />
 
           {/* AMOUNT */}
-          <SelectProductAmount />
+          <SelectProductAmount
+            mode={Mode.SingleProduct}
+            amount={amount}
+            setAmount={setAmount}
+          />
 
           {/* CART BUTTON */}
           <Button className='mt-10' size='lg' onClick={addToCart}>
