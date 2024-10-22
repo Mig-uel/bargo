@@ -51,7 +51,31 @@ const cartSlice = createSlice({
       toast({ description: 'Item added to cart' })
     },
 
-    removeItem: () => {},
+    removeItem: (state, action: PayloadAction<string>) => {
+      const productID = action.payload
+
+      const item = state.cartItems.find(
+        (i) => i.productID.toString() === productID
+      )
+
+      if (!item) return
+
+      // update cart items
+      state.cartItems = state.cartItems.filter(
+        (i) => i.productID.toString() !== productID
+      )
+
+      // update number of items in cart
+      state.numItemsInCart -= item.amount
+
+      // update cart total
+      state.cartTotal -= Number(item.price) * item.amount
+
+      // update order total
+      cartSlice.caseReducers.calculateTotal(state)
+
+      toast({ description: 'Item removed from the cart' })
+    },
 
     editItem: () => {},
 
