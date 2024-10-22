@@ -25,9 +25,7 @@ const cartSlice = createSlice({
     addItem: (state, action: PayloadAction<CartItem>) => {
       const cartItem = action.payload
 
-      const item = state.cartItems.find(
-        (i) => i.productID === cartItem.productID
-      )
+      const item = state.cartItems.find((i) => i.cartID === cartItem.cartID)
 
       if (item) item.amount += cartItem.amount
       else state.cartItems.push(cartItem)
@@ -52,18 +50,14 @@ const cartSlice = createSlice({
     },
 
     removeItem: (state, action: PayloadAction<string>) => {
-      const productID = action.payload
+      const cartID = action.payload
 
-      const item = state.cartItems.find(
-        (i) => i.productID.toString() === productID
-      )
+      const item = state.cartItems.find((i) => i.cartID === cartID)
 
       if (!item) return
 
       // update cart items
-      state.cartItems = state.cartItems.filter(
-        (i) => i.productID.toString() !== productID
-      )
+      state.cartItems = state.cartItems.filter((i) => i.cartID !== cartID)
 
       // update number of items in cart
       state.numItemsInCart -= item.amount
@@ -79,12 +73,12 @@ const cartSlice = createSlice({
 
     editItem: (
       state,
-      action: PayloadAction<{ productID: string; amount: number }>
+      action: PayloadAction<{ cartID: string; amount: number }>
     ) => {
       const cartItem = action.payload
 
       state.cartItems = state.cartItems.map((item) => {
-        if (item.productID.toString() === cartItem.productID)
+        if (item.cartID === cartItem.cartID)
           return { ...item, amount: cartItem.amount }
 
         return item
