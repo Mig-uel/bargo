@@ -7,9 +7,12 @@ import {
   SelectProductColor,
 } from '../../components/single-product'
 import { Mode } from '@/components/single-product/select-product-amount.component'
-import { formatPrice, type SingleProductResponse } from '@/utils'
+import { useAppDispatch } from '@/store/hooks'
+import { addItem } from '@/store/cart/cartSlice'
+import { type CartItem, formatPrice, type SingleProductResponse } from '@/utils'
 
 const SingleProduct = () => {
+  const dispatch = useAppDispatch()
   const { data: product } = useLoaderData() as SingleProductResponse
 
   const { colors, company, description, image, price, title } =
@@ -20,9 +23,18 @@ const SingleProduct = () => {
   const [productColor, setProductColor] = useState(colors[0])
   const [amount, setAmount] = useState(1)
 
-  const addToCart = () => {
-    console.log('added to cart')
+  const cartItem: CartItem = {
+    cartID: product.id + productColor,
+    productID: product.id,
+    image,
+    title,
+    price,
+    amount,
+    productColor,
+    company,
   }
+
+  const addToCart = () => dispatch(addItem(cartItem))
 
   return (
     <section>
