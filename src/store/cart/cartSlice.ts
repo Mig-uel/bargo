@@ -7,7 +7,7 @@ const defaultState: CartState = {
   cartTotal: 0,
   numItemsInCart: 0,
   orderTotal: 0,
-  shipping: 15,
+  shipping: 1500,
   tax: 0,
 }
 
