@@ -1,4 +1,9 @@
+import { useAppDispatch } from '@/store/hooks'
+import { Button } from '../ui/button'
 import { formatPrice } from '@/utils'
+import { editItem, removeItem } from '@/store/cart/cartSlice'
+import { SelectProductAmount } from '../single-product'
+import { Mode } from '../single-product/select-product-amount.component'
 
 export const FirstCol = ({
   image,
@@ -45,8 +50,36 @@ export const SecondCol = ({
   )
 }
 
-export const ThirdCol = () => {
-  return <h4>Third Col</h4>
+export const ThirdCol = ({
+  amount,
+  cartID,
+}: {
+  amount: number
+  cartID: string
+}) => {
+  const dispatch = useAppDispatch()
+
+  const removeItemFromCart = () => dispatch(removeItem(cartID))
+
+  const setItemAmount = (value: number) =>
+    dispatch(editItem({ amount: value, cartID }))
+
+  return (
+    <div>
+      <SelectProductAmount
+        amount={amount}
+        setAmount={setItemAmount}
+        mode={Mode.CartItem}
+      />
+      <Button
+        variant='link'
+        className='-ml-4 capitalize'
+        onClick={removeItemFromCart}
+      >
+        remove
+      </Button>
+    </div>
+  )
 }
 
 export const FourthCol = ({ price }: { price: string }) => {
