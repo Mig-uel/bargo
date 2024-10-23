@@ -10,7 +10,7 @@ const Cart = () => {
 
   const numItemsInCart = useAppSelector((state) => state.cart.numItemsInCart)
 
-  if (!numItemsInCart) return <SectionTitle text='Empty cart' />
+  if (!numItemsInCart) return <SectionTitle text='Cart is Empty' />
 
   return (
     <>
