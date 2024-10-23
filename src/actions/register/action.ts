@@ -10,9 +10,7 @@ const action: ActionFunction = async ({
   const userData = Object.fromEntries(formData)
 
   try {
-    const res = await customFetch.post('/auth/local/register', userData)
-
-    console.log(res)
+    await customFetch.post('/auth/local/register', userData)
 
     toast({ description: 'Successfully registered!' })
 
