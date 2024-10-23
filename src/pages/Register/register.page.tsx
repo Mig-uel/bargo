@@ -1,4 +1,3 @@
-import { registerAction } from '@/actions'
 import { FormInput } from '@/components/inputs'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -13,7 +12,7 @@ const Register = () => {
         </CardHeader>
 
         <CardContent>
-          <Form>
+          <Form method='POST'>
             <FormInput
               name='username'
               label='username'
