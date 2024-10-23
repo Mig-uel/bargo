@@ -1,4 +1,5 @@
 import { FormInput } from '@/components/inputs'
+import { SubmitButton } from '@/components/register'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Form, Link } from 'react-router-dom'
@@ -19,9 +20,7 @@ const Register = () => {
 
             <FormInput name='password' type='password' label='password' />
 
-            <Button type='submit' variant='default' className='mt-4 w-full'>
-              Register
-            </Button>
+            <SubmitButton text='Register' className='w-full mt-4' />
 
             <p className='text-center mt-4'>
               Already a member?
