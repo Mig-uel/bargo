@@ -13,26 +13,11 @@ const Register = () => {
 
         <CardContent>
           <Form method='POST'>
-            <FormInput
-              name='username'
-              label='username'
-              type='text'
-              defaultValue='test'
-            />
+            <FormInput name='username' label='username' type='text' />
 
-            <FormInput
-              name='email'
-              type='email'
-              defaultValue='test@test.com'
-              label='email'
-            />
+            <FormInput name='email' type='email' label='email' />
 
-            <FormInput
-              name='password'
-              type='password'
-              defaultValue='secret'
-              label='password'
-            />
+            <FormInput name='password' type='password' label='password' />
 
             <Button type='submit' variant='default' className='mt-4 w-full'>
               Register
