@@ -1,3 +1,5 @@
+import { formatPrice } from '@/utils'
+
 export const FirstCol = ({
   image,
   title,
@@ -47,6 +49,6 @@ export const ThirdCol = () => {
   return <h4>Third Col</h4>
 }
 
-export const FourthCol = () => {
-  return <h4>Fourth Col</h4>
+export const FourthCol = ({ price }: { price: string }) => {
+  return <p className='font-medium sm:ml-auto'>{formatPrice(price)}</p>
 }
