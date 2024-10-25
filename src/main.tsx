@@ -10,11 +10,18 @@ import { store } from '@/store/store'
 // toast
 import { Toaster } from './components/ui/toaster.tsx'
 
+// react helmet
+import { HelmetProvider } from 'react-helmet-async'
+
+
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-      <Toaster />
-      <App />
+      <HelmetProvider>
+        <Toaster />
+        <App />
+      </HelmetProvider>
     </Provider>
   </StrictMode>
 )
