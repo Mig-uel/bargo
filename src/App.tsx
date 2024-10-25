@@ -13,13 +13,8 @@ import {
   SingleProduct,
 } from './pages'
 import { ErrorElement } from './components'
-import {
-  checkoutLoader,
-  landingLoader,
-  productsLoader,
-  singleProductLoader,
-} from './loaders'
-import { loginAction, registerAction } from './actions'
+import { landingLoader, productsLoader, singleProductLoader } from './loaders'
+import { checkoutAction, loginAction, registerAction } from './actions'
 import { store } from './store/store'
 
 const router = createBrowserRouter([
@@ -61,7 +56,7 @@ const router = createBrowserRouter([
         path: 'checkout',
         element: <Checkout />,
         errorElement: <ErrorElement />,
-        loader: checkoutLoader(store),
+        action: checkoutAction,
       },
       {
         path: 'orders',
