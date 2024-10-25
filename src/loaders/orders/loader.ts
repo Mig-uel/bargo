@@ -10,6 +10,7 @@ const loader =
       if (!store.getState().user.user) {
         return redirect('/login')
       }
+
       const params = Object.fromEntries([
         ...new URL(request.url).searchParams.entries(),
       ])
