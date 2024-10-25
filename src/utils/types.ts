@@ -101,3 +101,8 @@ export type Order = {
 export type OrdersMeta = {
   pagination: Pagination
 }
+
+export type OrdersResponse = {
+  data: Order[]
+  meta: OrdersMeta
+}
