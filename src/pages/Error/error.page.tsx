@@ -1,4 +1,5 @@
 import { isRouteErrorResponse, Link, useRouteError } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Button } from '@/components/ui/button'
 
 const Error = () => {
@@ -6,25 +7,31 @@ const Error = () => {
 
   if (isRouteErrorResponse(error) && error.status === 404) {
     return (
-      <main className='grid min-h-screen place-items-center px-8'>
-        <div className='text-center'>
-          <p className='text-9xl font-semibold text-primary'>404</p>
+      <>
+        <Helmet>
+          <title>Page Not Found</title>
+        </Helmet>
 
-          <h1 className='mt-4 text-3xl font-bold tracking-tight sm:text-5xl'>
-            Page Not Found
-          </h1>
+        <main className='grid min-h-screen place-items-center px-8'>
+          <div className='text-center'>
+            <p className='text-9xl font-semibold text-primary'>404</p>
 
-          <p className='mt-6 text-lg leading-7'>
-            Sorry, we could not find the page you were looking for.
-          </p>
+            <h1 className='mt-4 text-3xl font-bold tracking-tight sm:text-5xl'>
+              Page Not Found
+            </h1>
 
-          <div className='mt-10'>
-            <Button asChild size='lg' variant='secondary'>
-              <Link to='/'>Go Back Home</Link>
-            </Button>
+            <p className='mt-6 text-lg leading-7'>
+              Sorry, we could not find the page you were looking for.
+            </p>
+
+            <div className='mt-10'>
+              <Button asChild size='lg' variant='secondary'>
+                <Link to='/'>Go Back Home</Link>
+              </Button>
+            </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </>
     )
   }
 
@@ -38,4 +45,5 @@ const Error = () => {
     </main>
   )
 }
+
 export default Error
