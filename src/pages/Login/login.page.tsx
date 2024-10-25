@@ -8,6 +8,7 @@ import { type AxiosResponse } from 'axios'
 import { customFetch } from '@/utils'
 import { login } from '@/store/user/userSlice'
 import { toast } from '@/hooks/use-toast'
+import { Separator } from '@/components/ui/separator'
 
 const Login = () => {
   const dispatch = useAppDispatch()
@@ -65,6 +66,14 @@ const Login = () => {
               Not a member?{' '}
               <Button asChild variant='link' type='button'>
                 <Link to='/register'>Register</Link>
+              </Button>
+            </p>
+
+            <Separator orientation='horizontal' className='mt-4' />
+
+            <p className='text-center'>
+              <Button asChild variant='link'>
+                <Link to='/'>Return Home</Link>
               </Button>
             </p>
           </Form>
