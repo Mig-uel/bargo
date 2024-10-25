@@ -1,14 +1,10 @@
-import { useAppSelector } from '@/store/hooks'
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { OrdersResponse } from '@/utils'
+import { useLoaderData } from 'react-router-dom'
 
 const Orders = () => {
-  const navigate = useNavigate()
-  const user = useAppSelector((state) => state.user.user)
+  const { meta, data: orders } = useLoaderData() as OrdersResponse
 
-  useEffect(() => {
-    if (!user) return navigate('/login', { replace: true })
-  }, [navigate, user])
+  console.log(meta)
 
   return <div>Orders</div>
 }
