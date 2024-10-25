@@ -5,12 +5,20 @@ import { useAppSelector } from '@/store/hooks'
 import { Link } from 'react-router-dom'
 
 const Cart = () => {
-  // temp
-  const user = null
+  const user = useAppSelector((state) => state.user.user)
 
   const numItemsInCart = useAppSelector((state) => state.cart.numItemsInCart)
 
-  if (!numItemsInCart) return <SectionTitle text='Cart is Empty' />
+  if (!numItemsInCart)
+    return (
+      <>
+        <SectionTitle text='Cart is Empty' />
+
+        <Button asChild className='mt-8 w-full md:w-40'>
+          <Link to='/products'>Go to Products</Link>
+        </Button>
+      </>
+    )
 
   return (
     <>
@@ -25,15 +33,13 @@ const Cart = () => {
         {/* CART TOTALS */}
         <div className='lg:col-span-4 lg:pl-4'>
           <CartTotals />
-          {user ? (
-            <Button asChild className='mt-8 w-full'>
+          <Button asChild className='mt-8 w-full'>
+            {user ? (
               <Link to='/checkout'>Checkout</Link>
-            </Button>
-          ) : (
-            <Button asChild className='mt-8 w-full'>
+            ) : (
               <Link to='/login'>Login to Checkout</Link>
-            </Button>
-          )}
+            )}
+          </Button>
         </div>
       </div>
     </>
