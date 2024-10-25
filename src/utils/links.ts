@@ -17,14 +17,6 @@ export const links: Link[] = [
     label: 'products',
   },
   {
-    href: 'cart',
-    label: 'cart',
-  },
-  {
-    href: 'checkout',
-    label: 'checkout',
-  },
-  {
     href: 'orders',
     label: 'orders',
   },
