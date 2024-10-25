@@ -73,6 +73,7 @@ export type CartState = {
   orderTotal: number
 }
 
+// checkout type
 export type Checkout = {
   name: string
   address: string
@@ -80,4 +81,23 @@ export type Checkout = {
   orderTotal: string
   cartItems: CartItem[]
   numItemsInCart: number
+}
+
+// orders types
+export type Order = {
+  id: number
+  attributes: {
+    address: string
+    cartItems: CartItem[]
+    createdAt: string
+    name: string
+    numItemsInCart: number
+    orderTotal: string
+    publishedAt: string
+    updatedAt: string
+  }
+}
+
+export type OrdersMeta = {
+  pagination: Pagination
 }
