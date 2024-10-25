@@ -8,8 +8,11 @@ import {
 } from '../ui/dropdown-menu'
 import { links } from '@/utils'
 import { NavLink } from 'react-router-dom'
+import { useAppSelector } from '@/store/hooks'
 
 const LinksDropdown = () => {
+  const user = useAppSelector((state) => state.user.user)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className='lg:hidden'>
@@ -23,18 +26,24 @@ const LinksDropdown = () => {
         align='start'
         sideOffset={25}
       >
-        {links.map((link) => (
-          <DropdownMenuItem key={link.label}>
-            <NavLink
-              to={link.href}
-              className={({ isActive }) =>
-                `capitalize w-full ${isActive ? 'text-primary' : ''}`
-              }
-            >
-              {link.label}
-            </NavLink>
-          </DropdownMenuItem>
-        ))}
+        {links.map((link) => {
+          const restrictedLink = link.label === 'orders'
+
+          if (restrictedLink && !user) return
+
+          return (
+            <DropdownMenuItem key={link.label}>
+              <NavLink
+                to={link.href}
+                className={({ isActive }) =>
+                  `capitalize w-full ${isActive ? 'text-primary' : ''}`
+                }
+              >
+                {link.label}
+              </NavLink>
+            </DropdownMenuItem>
+          )
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   )
