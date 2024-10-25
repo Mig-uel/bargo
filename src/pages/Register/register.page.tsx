@@ -2,6 +2,7 @@ import { FormInput } from '@/components/inputs'
 import { SubmitButton } from '@/components/register'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 import { Form, Link } from 'react-router-dom'
 
 const Register = () => {
@@ -26,6 +27,14 @@ const Register = () => {
               Already a member?
               <Button type='button' asChild variant='link'>
                 <Link to='/login'>Login</Link>
+              </Button>
+            </p>
+
+            <Separator orientation='horizontal' className='mt-4' />
+
+            <p className='text-center'>
+              <Button asChild variant='link'>
+                <Link to='/'>Return Home</Link>
               </Button>
             </p>
           </Form>
